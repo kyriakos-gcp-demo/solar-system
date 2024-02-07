@@ -17,9 +17,6 @@ jobs:
         name: Unit Testing
         runs-on: ubuntu-latest
         steps:
-        - name: Echo PATH before setup-node
-          run: echo $PATH
-        
         - name: Checkout Repository
           uses: actions/checkout@v4
 
@@ -34,5 +31,8 @@ jobs:
         - name: Unit Testing
           run: npm test
 
-        - name: Echo PATH after setup-node
-          run: echo $PATH
+        - name: Archive Test Result
+          uses: actions/upload-artifact@v3
+          with:
+            name: Mocha-Test-Result
+            path: test-result.xml
