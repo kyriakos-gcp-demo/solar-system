@@ -114,4 +114,4 @@ jobs:
           sudo docker run hello-world
       - name: Dockerhub Login
         run: |
-          cat ${{ secrets.DOCKERHUB_PASSWORD }} | docker login --username ${{ vars.DOCKERHUB_USERNAME }} --password-stdin
+          echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login --username ${{ vars.DOCKERHUB_USERNAME }} --password-stdin
