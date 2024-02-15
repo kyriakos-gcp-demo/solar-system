@@ -245,7 +245,7 @@ jobs:
           curl -s -k -X GET https://$URL/live | jq -r .status | grep -i live
 
     prod-deploy: 
-      if: github.ref == 'refs/head/main'
+      if: github.ref == 'refs/heads/main'
       needs: [docker]
       environment:
         name: production
@@ -313,7 +313,7 @@ jobs:
           echo "APP_INGRESS_HOST=$(kubectl -n ${{ vars.NAMESPACE }} get ingress -o jsonpath='{.items[0].spec.tls[0].hosts[0]}')" >> $GITHUB_OUTPUT
 
     prod-integration-testing:
-      if: github.ref == 'refs/head/main'
+      if: github.ref == 'refs/heads/main'
       name: Prod Integration Testing
       needs: [prod-deploy]
       runs-on: ubuntu-latest
